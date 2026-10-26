@@ -1,0 +1,4 @@
+Month,Jan,Feb,Mar,Apr,May
+Sales,100,120,130,140,150
+Tax,10,12,13,14,15
+Total,=B2+B3,=C2+C3,=D2+D3,=E2-E3,=F2+F3

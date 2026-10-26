@@ -1,0 +1,71 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Audit: SEM5.xlsx (Default Build)",
+      "type": "shell",
+      "command": "gcc -Wall -Wextra -pedantic -std=c99 -Isrc src/main.c src/sheet_reader.c src/lexer.c src/parser.c src/ast.c src/semantic.c src/normalize.c src/pattern_analysis.c src/anomaly_detection.c -o formulaguard.exe; .\\formulaguard.exe tests/SEM5.xlsx",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "Audit: Book1.xlsx",
+      "type": "shell",
+      "command": "gcc -Wall -Wextra -pedantic -std=c99 -Isrc src/main.c src/sheet_reader.c src/lexer.c src/parser.c src/ast.c src/semantic.c src/normalize.c src/pattern_analysis.c src/anomaly_detection.c -o formulaguard.exe; .\\formulaguard.exe tests/Book1.xlsx",
+      "group": "test",
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "Test: Anomaly Detection",
+      "type": "shell",
+      "command": "gcc -Isrc tests/anomaly_detection_tests.c src/anomaly_detection.c src/pattern_analysis.c src/normalize.c src/semantic.c src/parser.c src/lexer.c src/ast.c -o test_anomaly_detection.exe; .\\test_anomaly_detection.exe",
+      "group": "test",
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "Test: Pattern Analysis",
+      "type": "shell",
+      "command": "gcc -Isrc tests/pattern_analysis_tests.c src/pattern_analysis.c src/normalize.c src/semantic.c src/parser.c src/lexer.c src/ast.c -o test_pattern_analysis.exe; .\\test_pattern_analysis.exe",
+      "group": "test",
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "Test: Normalization",
+      "type": "shell",
+      "command": "gcc -Isrc tests/normalize_tests.c src/lexer.c src/parser.c src/ast.c src/normalize.c -o test_normalize.exe; .\\test_normalize.exe",
+      "group": "test",
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "Test: Semantic Analysis",
+      "type": "shell",
+      "command": "gcc -Isrc tests/semantic_tests.c src/lexer.c src/parser.c src/ast.c src/semantic.c -o test_semantic.exe; .\\test_semantic.exe",
+      "group": "test",
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "Test: Parser",
+      "type": "shell",
+      "command": "gcc -Isrc tests/parser_tests.c src/lexer.c src/parser.c src/ast.c -o test_parser.exe; .\\test_parser.exe",
+      "group": "test",
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "Test: Lexer",
+      "type": "shell",
+      "command": "gcc -Isrc tests/lexer_tests.c src/lexer.c -o test_lexer.exe; .\\test_lexer.exe",
+      "group": "test",
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "Run All Tests",
+      "type": "shell",
+      "command": ".\\run.ps1 all",
+      "group": "test",
+      "problemMatcher": ["$gcc"]
+    }
+  ]
+}
